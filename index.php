@@ -7,6 +7,8 @@
 
 <h1> Testing website voor CI/CD-tool </h1>
 
+<h1> Testing website voor CI/CD-tool nummer 2 </h1>
+
 <?php
 
 $host = "localhost";
