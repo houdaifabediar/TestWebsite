@@ -1,0 +1,88 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Ophalen ISSUE_BRANCH') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: 'Issue']], browser: [$class: 'GithubWeb', repoUrl: 'https://github.com/houdaifabediar/TestWebsite'], extensions: [], userRemoteConfigs: [[url: 'https://github.com/houdaifabediar/TestWebsite.git']]])
+				
+                echo 'ISSUE_BRANCH opgehaald'
+            }
+        }
+		
+        stage('Unit test') {
+            
+//            when {
+//                expression {
+//                    env.BRANCH_NAME == 'Issue '
+//                }
+//            }
+            
+            steps {
+                echo 'testen van de ISSUE_BRANCH met een Unit test-tool.'
+                
+                jiraComment body: 'Testen van jenkins pipeline', issueKey: 'PO-53'
+            }
+        }
+		
+        stage ('Bouw DEVELOP_BRANCH_1'){
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: 'Develop']], extensions: [[$class: 'PreBuildMerge', options: [mergeRemote: 'https://github.com/houdaifabediar/TestWebsite.git', mergeTarget: 'issue ']]], userRemoteConfigs: [[url: 'https://github.com/houdaifabediar/TestWebsite.git']]])
+                
+                echo 'Samenvoegen van ISSUE_BRANHC met DEVELOP_BRANCH.'
+            }
+        }
+		
+        stage ('Programatuur testen'){
+            steps {
+                echo 'Testen van de code mbv. van SonarQUBE & OwaspZAP'
+            }
+        }
+		
+        stage ('Bouw DEVELOP_BRANCH_2'){
+            steps {
+                echo 'MASTER_BRANCH samenvoegen met DEVELOP_BRANCH'
+            }
+        }
+		
+        stage ('TestDeployment'){
+            steps {
+                echo 'DEVELOP_BRANCH deployen op test_omgeving'
+            }
+        }
+		
+        stage ('Smoke test'){
+            steps {
+                echo 'Uitvoeren van de smoke test'
+            }
+        }
+		
+        stage ('Applicatie testen'){
+            steps {
+                echo 'De applicatie op de test-omgeving testen mbv. Regressietest & handmatige gebruikerstest?'
+            }
+        }
+		
+        stage ('Bouw MASTER_BRANCH'){
+            steps {
+                echo 'DEVELOP_BRANHC samenvoegen met de MASTER_BRANCH'
+            }
+        }
+		
+        stage ('Deployment Productie_omgeving'){
+            steps {
+                
+                // gitAutomerger checkoutFromRemote: true, releaseBranchPattern: 'Develop', remoteName: 'Develop'
+                
+                echo 'MASTER_BRANCH implementeren op PRO'
+            }
+        }
+		
+        stage ('Uitvoeren extra check (Indien nodig?!)'){
+            steps {
+                echo 'Extra checks uitvoeren indien de ontwikkelaar dit nodig vindt, zodat er 100% zekerheid is dat alles goed werkt'
+            }
+        }
+		
+    }
+}
