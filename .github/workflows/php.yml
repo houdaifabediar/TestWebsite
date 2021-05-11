@@ -13,16 +13,16 @@ jobs:
 
     steps:
     - name: chechout branches
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
     
     - name: Testen van code middel SonarQUBE
-    - name: SonarQube Trigger
-    - uses: actions/checkout@master
-    - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@v1.1.0
+      uses: kitabisa/sonarqube-action@master
       with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
+        projectBaseDir: "/path/to/my-custom-project"
+        projectKey: "my-custom-project"
+        projectName: "my-custom-project-name"
+        projectVersion: "v0.0.1"
+
 
   
     
