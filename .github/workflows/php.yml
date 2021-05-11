@@ -10,8 +10,8 @@ jobs:
   Unit_testen_van_de_branch:
     runs-on: ubuntu-latest
     steps:
-    - name: chechout branches
-      uses: actions/checkout@v2
+#     - name: chechout branches
+#       uses: actions/checkout@v2
 
     - name: Uitvoeren van Unit test
       run: echo 'Unit test uitgevoerd'
@@ -21,6 +21,8 @@ jobs:
     needs: "Unit_testen_van_de_branch"
     runs-on: ubuntu-latest
     steps:
+    - name: chechout branches
+      uses: actions/checkout@v2
     - name: mergen van Issue_branch met Develop_branch
       run: echo 'Issue_branch gemerged met Develop_branch'
     - uses: devmasx/merge-branch@v1.3.1
@@ -35,6 +37,8 @@ jobs:
     needs: "Bouwen_van_de_develop_branch"
     runs-on: ubuntu-latest
     steps:
+#     - name: chechout branches
+#       uses: actions/checkout@v2
     - name: Uitvoeren van SonarQUBE
       run: echo 'SonarQUBE test uitgevoerd'
 #     - uses: kitabisa/sonarqube-action@master
@@ -64,6 +68,8 @@ jobs:
     needs: "Bouwen_van_de_develop_branch"
     runs-on: ubuntu-latest
     steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
       - name: uitvoeren van component test
         run: echo 'Component test uitgevoerd'
         
@@ -72,6 +78,8 @@ jobs:
     needs: ["SonarQUBE_test", "OWASP_test", "Component_test"]
     runs-on: ubuntu-latest
     steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
       - name: Master_branch samenvoegen met de Develop_branch
         run: echo 'Branches samengevoegd'
     
@@ -80,5 +88,7 @@ jobs:
     needs: "Develop_branch_updaten_met_master_branch"
     runs-on: ubuntu-latest
     steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
       - name: Deployemnt van de Develop_branch op de test omgeving
         run: echo 'Development_branch gedeployed op de test omgeving'
