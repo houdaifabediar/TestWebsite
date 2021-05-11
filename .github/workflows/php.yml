@@ -10,9 +10,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    
     - uses: actions/checkout@v2
       with:
         ref: Develop
+        
+    - uses: devmasx/merge-branch@v1.3.1
+      with:
+        type: now
+        from_branch: Issue
+        target_branch: Develop
+        github_token: ${{ github.token }}
 
 #   Unit_testen_van_de_branch:
 #     runs-on: ubuntu-latest
