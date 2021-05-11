@@ -7,7 +7,7 @@
 
 <h1> Testing website voor CI/CD-tool </h1>
 
-<h1> Verandering voor testen, commit 1 </h1>
+<h1> Verandering voor testen, commit 2 </h1>
 
 <?php
 
