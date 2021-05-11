@@ -31,38 +31,38 @@ jobs:
     
     
     
-  Bouwen_van_de_develop_branch_1:
-    needs: "Merge_conflicten_vinden"
-    runs-on: ubuntu-latest
-    steps:
-      - name: chechout branches
-        uses: actions/checkout@v2
-      - name: mergen van Issue_branch met Develop_branch
-        run: echo 'Issue_branch gemerged met Develop_branch'
-      - uses: devmasx/merge-branch@v1.3.1
-        with:
-            type: now
-            from_branch: Issue
-            target_branch: Develop
-            github_token: ${{ github.token }}
+#   Bouwen_van_de_develop_branch_1:
+#     needs: "Merge_conflicten_vinden"
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
+#       - name: mergen van Issue_branch met Develop_branch
+#         run: echo 'Issue_branch gemerged met Develop_branch'
+#       - uses: devmasx/merge-branch@v1.3.1
+#         with:
+#             type: now
+#             from_branch: Issue
+#             target_branch: Develop
+#             github_token: ${{ github.token }}
     
     
     
     
-  Bouwen_van_de_develop_branch_2:
-    needs: "Merge_conflicten_vinden"
-    runs-on: ubuntu-latest
-    steps:
-      - name: chechout branches
-        uses: actions/checkout@v2
-      - name: mergen van Issue_branch met Develop_branch
-        run: echo 'Issue_branch gemerged met Develop_branch'
-      - uses: devmasx/merge-branch@v1.3.1
-        with:
-          type: now
-          from_branch: Issue1
-          target_branch: Develop
-          github_token: ${{ github.token }}
+#   Bouwen_van_de_develop_branch_2:
+#     needs: "Merge_conflicten_vinden"
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
+#       - name: mergen van Issue_branch met Develop_branch
+#         run: echo 'Issue_branch gemerged met Develop_branch'
+#       - uses: devmasx/merge-branch@v1.3.1
+#         with:
+#           type: now
+#           from_branch: Issue1
+#           target_branch: Develop
+#           github_token: ${{ github.token }}
           
 #marketplace: https://github.com/marketplace/actions/merge-branch
           
