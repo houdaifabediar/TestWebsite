@@ -2,10 +2,8 @@ name: PHP Composer test
 
 on:
   push:
-    branches: [ Develop]
-  pull_request:
     branches: [Issue]
-  commit_comment:
+  pull_request:
     branches: [Issue]
 
 jobs:
