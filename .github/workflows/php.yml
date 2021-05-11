@@ -1,0 +1,35 @@
+name: PHP Composer test
+
+on:
+  push:
+    branches: [main, Develop, Issue]
+  pull_request:
+    branches: [main, Develop, Issue]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: chechout branches
+      uses: actions/checkout@v2
+    
+#     - name: Testen van code middels SonarQUBE
+#       uses: kitabisa/sonarqube-action@master
+#       with:
+#         projectBaseDir: "/path/to/my-custom-project"
+#         projectKey: "my-custom-project"
+#         projectName: "my-custom-project-name"
+#         projectVersion: "v0.0.1"
+
+
+#     - name: mergen van issue branch met develop branch, door de branches te synchroniseren.
+#       uses: devmasx/merge-branch@v1.3.1
+#       with:
+#           type: now
+#           from_branch: Issue
+#           target_branch: Develop
+#           github_token: ${{ github.token }}
+
+
