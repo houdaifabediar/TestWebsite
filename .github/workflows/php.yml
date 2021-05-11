@@ -2,9 +2,9 @@ name: PHP Composer test
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main|Develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main|Develop ]
 
 jobs:
   build:
@@ -15,14 +15,22 @@ jobs:
     - name: chechout branches
       uses: actions/checkout@v2
     
-    - name: Testen van code middel SonarQUBE
-      uses: kitabisa/sonarqube-action@master
-      with:
-        projectBaseDir: "/path/to/my-custom-project"
-        projectKey: "my-custom-project"
-        projectName: "my-custom-project-name"
-        projectVersion: "v0.0.1"
+#     - name: Testen van code middel SonarQUBE
+#       uses: kitabisa/sonarqube-action@master
+#       with:
+#         projectBaseDir: "/path/to/my-custom-project"
+#         projectKey: "my-custom-project"
+#         projectName: "my-custom-project-name"
+#         projectVersion: "v0.0.1"
 
+    - name: mergen van issue branch met develop branch, middels labels
+      uses: devmasx/merge-branch@v1.3.1
+      with:
+        label_name: 'merged in develop'
+        target_branch: 'develop'
+        github_token: ${{ github.token }}
+    
+    
 
   
     
