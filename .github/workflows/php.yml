@@ -10,17 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    
-    - uses: actions/checkout@v2
-      with:
-        ref: Develop
         
-    - uses: devmasx/merge-branch@v1.3.1
-      with:
-        type: now
-        from_branch: Issue
-        target_branch: Develop
-        github_token: ${{ github.token }}
+    - uses: actions/checkout@v2
+#       with:
+#         ref: Develop
+    - run: npm ci
+    - uses: nelonoel/branch-name@v1.0.1
+    # Use branch name for whatever purpose
+    - run: echo ${BRANCH_NAME}
+        
+
 
 #   Unit_testen_van_de_branch:
 #     runs-on: ubuntu-latest
