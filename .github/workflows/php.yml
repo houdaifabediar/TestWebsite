@@ -26,7 +26,7 @@ jobs:
     - name: mergen van issue branch met develop branch, middels labels
       uses: devmasx/merge-branch@v1.3.1
       with:
-        label_name: 'merge_develop'
+        label_name: 'Merge_develop'
         target_branch: 'Develop'
         github_token: ${{ github.token }}
     
