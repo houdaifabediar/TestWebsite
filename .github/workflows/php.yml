@@ -7,29 +7,96 @@ on:
     branches: [main, Develop, Issue]
 
 jobs:
-  build:
-
+  Unit_testen_van_de_branch:
     runs-on: ubuntu-latest
+    steps:
+#     - name: chechout branches
+#       uses: actions/checkout@v2
 
+    - name: Uitvoeren van Unit test
+      run: echo 'Unit test uitgevoerd'
+    
+    
+  Bouwen_van_de_develop_branch:
+    needs: "Unit_testen_van_de_branch"
+    runs-on: ubuntu-latest
     steps:
     - name: chechout branches
       uses: actions/checkout@v2
-    
-#     - name: Testen van code middels SonarQUBE
-#       uses: kitabisa/sonarqube-action@master
+    - name: mergen van Issue_branch met Develop_branch
+      run: echo 'Issue_branch gemerged met Develop_branch'
+    - uses: devmasx/merge-branch@v1.3.1
+      with:
+          type: now
+          from_branch: Issue
+          target_branch: Develop
+          github_token: ${{ github.token }}
+    - uses: devmasx/merge-branch@v1.3.1
+      with:
+          type: now
+          from_branch: Issue1
+          target_branch: Develop
+          github_token: ${{ github.token }}
+          
+#marketplace: https://github.com/marketplace/actions/merge-branch
+          
+  
+  SonarQUBE_test:
+    needs: "Bouwen_van_de_develop_branch"
+    runs-on: ubuntu-latest
+    steps:
+#     - name: chechout branches
+#       uses: actions/checkout@v2
+    - name: Uitvoeren van SonarQUBE
+      run: echo 'SonarQUBE test uitgevoerd'
+#     - uses: kitabisa/sonarqube-action@master
 #       with:
 #         projectBaseDir: "/path/to/my-custom-project"
 #         projectKey: "my-custom-project"
 #         projectName: "my-custom-project-name"
 #         projectVersion: "v0.0.1"
 
+# marketplace: https://github.com/marketplace/actions/sonarqube-scan
+  
+  
+  OWASP_test:
+    needs: "Bouwen_van_de_develop_branch"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Uitvoeren van OWASP
+        run: echo 'OWASP scan uitgevoerd'
+#       - uses: zaproxy/action-full-scan@v0.2.0
+#         with:
+#           target: 'localhost:8080'
+          
+# marketplace: https://github.com/marketplace/actions/owasp-zap-full-scan
 
-#     - name: mergen van issue branch met develop branch, door de branches te synchroniseren.
-#       uses: devmasx/merge-branch@v1.3.1
-#       with:
-#           type: now
-#           from_branch: Issue
-#           target_branch: Develop
-#           github_token: ${{ github.token }}
 
-
+  Component_test:
+    needs: "Bouwen_van_de_develop_branch"
+    runs-on: ubuntu-latest
+    steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
+      - name: uitvoeren van component test
+        run: echo 'Component test uitgevoerd'
+        
+        
+  Develop_branch_updaten_met_master_branch:
+    needs: ["SonarQUBE_test", "OWASP_test", "Component_test"]
+    runs-on: ubuntu-latest
+    steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
+      - name: Master_branch samenvoegen met de Develop_branch
+        run: echo 'Branches samengevoegd'
+    
+    
+  Deployment_van_Develop_branch_op_test_PRO:
+    needs: "Develop_branch_updaten_met_master_branch"
+    runs-on: ubuntu-latest
+    steps:
+#       - name: chechout branches
+#         uses: actions/checkout@v2
+      - name: Deployemnt van de Develop_branch op de test omgeving
+        run: echo 'Development_branch gedeployed op de test omgeving'
