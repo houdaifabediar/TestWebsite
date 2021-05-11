@@ -126,9 +126,6 @@ jobs:
     needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: Develop
 
 #     - name: chechout branches
 #       uses: actions/checkout@v2
@@ -169,10 +166,6 @@ jobs:
     needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
     runs-on: ubuntu-latest
     steps:
-    
-      - uses: actions/checkout@v2
-        with:
-          ref: Develop
     
 #       - name: chechout branches
 #         uses: actions/checkout@v2
