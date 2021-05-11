@@ -7,7 +7,7 @@
 
 <h1> Testing website voor CI/CD-tool </h1>
 
-<h1> Verandering voor testen, commit 34 </h1>
+<h1> Verandering voor testen, commit 31 </h1>
 
 <h1> Verandering voor testen, commit 3 </h1>
 
