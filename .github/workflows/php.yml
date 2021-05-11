@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Uitvoeren van Unit test
+      run: Unit test uitgevoerd
     
     
   Bouwen van de develop branch:
