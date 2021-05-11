@@ -7,48 +7,44 @@ on:
     branches: [main, Develop, Issue]
 
 jobs:
-  ophalen Issue Branch:
+  Unit testen van de branch:
     runs-on: ubuntu-latest
     steps:
     - name: chechout branches
       uses: actions/checkout@v2
-   
-   
-  Unit test:
-    runs-on: ubuntu-latest
-    steps:
+
     - name: Uitvoeren van Unit test
       run: echo 'Unit test uitgevoerd'
     
     
-  Bouwen van de develop branch:
-    runs-on: ubuntu-latest
-    steps:
-    - name: mergen van Issue_branch met Develop_branch
-      run: echo 'Issue_branch gemerged met Develop_branch'
-#       uses: devmasx/merge-branch@v1.3.1
-#       with:
-#           type: now
-#           from_branch: Issue
-#           target_branch: Develop
-#           github_token: ${{ github.token }}
+#   Bouwen van de develop branch:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: mergen van Issue_branch met Develop_branch
+#       run: echo 'Issue_branch gemerged met Develop_branch'
+# #       uses: devmasx/merge-branch@v1.3.1
+# #       with:
+# #           type: now
+# #           from_branch: Issue
+# #           target_branch: Develop
+# #           github_token: ${{ github.token }}
   
-  Testen van programmatuur:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Uitvoeren van SonarQUBE
-      run: echo 'SonarQUBE test uitgevoerd'
-#       uses: kitabisa/sonarqube-action@master
-#       with:
-#         projectBaseDir: "/path/to/my-custom-project"
-#         projectKey: "my-custom-project"
-#         projectName: "my-custom-project-name"
-#         projectVersion: "v0.0.1"
+#   Testen van programmatuur:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Uitvoeren van SonarQUBE
+#       run: echo 'SonarQUBE test uitgevoerd'
+# #       uses: kitabisa/sonarqube-action@master
+# #       with:
+# #         projectBaseDir: "/path/to/my-custom-project"
+# #         projectKey: "my-custom-project"
+# #         projectName: "my-custom-project-name"
+# #         projectVersion: "v0.0.1"
 
-    - name: Uitveren van OWASP
-      uses: zaproxy/action-full-scan@v0.2.0
-      with:
-        target: 'https://www.zaproxy.org/'
+#     - name: Uitveren van OWASP
+#       uses: zaproxy/action-full-scan@v0.2.0
+#       with:
+#         target: 'https://www.zaproxy.org/'
     
     
 
