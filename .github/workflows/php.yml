@@ -2,7 +2,7 @@ name: PHP Composer test
 
 on:
   push:
-    branches: [Issue]
+    branches: []
   pull_request:
     branches: []
 
