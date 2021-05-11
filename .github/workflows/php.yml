@@ -31,7 +31,7 @@ jobs:
 #           github_token: ${{ github.token }}
           
   
-  Testen_van_programmatuur:
+  SonarQUBE test:
     needs: "Bouwen_van_de_develop_branch"
     runs-on: ubuntu-latest
     steps:
@@ -43,12 +43,25 @@ jobs:
 #         projectKey: "my-custom-project"
 #         projectName: "my-custom-project-name"
 #         projectVersion: "v0.0.1"
-
-    - name: Uitveren van OWASP
-      run: echo 'OWASP scan uitgevoerd'
-#       uses: zaproxy/action-full-scan@v0.2.0
+  
+  
+  OWASP test:
+    needs: "Bouwen_van_de_develop_branch"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Uitvoeren van OWASP
+        run: echo 'OWASP scan uitgevoerd'
+#     - uses: zaproxy/action-full-scan@v0.2.0
 #       with:
 #         target: 'https://www.zaproxy.org/'
+
+
+  Component test:
+    needs: "Bouwen_van_de_develop_branch"
+    runs-on: ubuntu-latest
+    steps:
+      - name: uitvoeren van component test
+        run: echo 'Component test uitgevoerd'
     
     
 
