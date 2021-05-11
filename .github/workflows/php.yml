@@ -7,7 +7,7 @@ on:
     branches: [main, Develop, Issue]
 
 jobs:
-  Unit testen van de branch:
+  Unit_testen_van_de_branch:
     runs-on: ubuntu-latest
     steps:
     - name: chechout branches
