@@ -2,9 +2,9 @@ name: PHP Composer test
 
 on:
   push:
-    branches: [Issue]
+    branches: [main, Develop]
   pull_request:
-    branches: [Issue]
+    branches: [main, Develop]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
     - name: chechout branches
       uses: actions/checkout@v2
     
-#     - name: Testen van code middel SonarQUBE
+#     - name: Testen van code middels SonarQUBE
 #       uses: kitabisa/sonarqube-action@master
 #       with:
 #         projectBaseDir: "/path/to/my-custom-project"
@@ -23,52 +23,13 @@ jobs:
 #         projectName: "my-custom-project-name"
 #         projectVersion: "v0.0.1"
 
-    - name: mergen van issue branch met develop branch, door de branches te synchroniseren.
-      uses: devmasx/merge-branch@v1.3.1
-      with:
-          type: now
-          from_branch: Issue
-          target_branch: Develop
-          github_token: ${{ github.token }}
 
-#     - name: Merge staging -> uat
+#     - name: mergen van issue branch met develop branch, door de branches te synchroniseren.
 #       uses: devmasx/merge-branch@v1.3.1
 #       with:
 #           type: now
-#           from_branch: staging
-#           target_branch: uat
+#           from_branch: Issue
+#           target_branch: Develop
 #           github_token: ${{ github.token }}
-    
-    
 
-  
-    
-  
-    
-    
-    
-    
-    
-    
-    
 
-#     - name: Validate composer.json and composer.lock
-#       run: composer validate --strict
-
-#     - name: Cache Composer packages
-#       id: composer-cache
-#       uses: actions/cache@v2
-#       with:
-#         path: vendor
-#         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-#         restore-keys: |
-#           ${{ runner.os }}-php-
-
-#     - name: Install dependencies
-#       run: composer install --prefer-dist --no-progress
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
