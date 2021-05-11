@@ -69,7 +69,7 @@ jobs:
   
   
   OWASP_test:
-    needs: "Bouwen_van_de_develop_branch"
+    needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
     runs-on: ubuntu-latest
     steps:
       - name: Uitvoeren van OWASP
@@ -82,7 +82,7 @@ jobs:
 
 
   Component_test:
-    needs: "Bouwen_van_de_develop_branch"
+    needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
     runs-on: ubuntu-latest
     steps:
 #       - name: chechout branches
