@@ -28,9 +28,17 @@ jobs:
     - uses: devmasx/merge-branch@v1.3.1
       with:
           type: now
-          from_branch: Issue**
+          from_branch: Issue
           target_branch: Develop
           github_token: ${{ github.token }}
+    - uses: devmasx/merge-branch@v1.3.1
+      with:
+          type: now
+          from_branch: Issue1
+          target_branch: Develop
+          github_token: ${{ github.token }}
+          
+#marketplace: https://github.com/marketplace/actions/merge-branch
           
   
   SonarQUBE_test:
