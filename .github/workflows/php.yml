@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Uitvoeren van Unit test
-      run: Unit test uitgevoerd
+      run: echo 'Unit test uitgevoerd'
     
     
   Bouwen van de develop branch:
