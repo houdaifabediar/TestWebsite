@@ -1,4 +1,4 @@
-name: PHP Composer test
+name: Demo SOLL ontwikkelstraat
 
 on:
   push:
