@@ -9,6 +9,8 @@
 
 <h1> Verandering voor testen, commit 2 </h1>
 
+<h1> Verandering voor testen, commit 3 </h1>
+
 <?php
 
 $host = "localhost";
