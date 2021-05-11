@@ -17,7 +17,7 @@ jobs:
       run: echo 'Unit test uitgevoerd'
     
     
-  Bouwen_van_de_develop_branch:
+  Bouwen_van_de_develop_branch_1:
     needs: "Unit_testen_van_de_branch"
     runs-on: ubuntu-latest
     steps:
@@ -31,8 +31,17 @@ jobs:
           from_branch: Issue
           target_branch: Develop
           github_token: ${{ github.token }}
-    - uses: devmasx/merge-branch@v1.3.1
-      with:
+    
+  Bouwen_van_de_develop_branch_2:
+    needs: "Unit_testen_van_de_branch"
+    runs-on: ubuntu-latest
+    steps:
+      - name: chechout branches
+        uses: actions/checkout@v2
+      - name: mergen van Issue_branch met Develop_branch
+        run: echo 'Issue_branch gemerged met Develop_branch'
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
           type: now
           from_branch: Issue1
           target_branch: Develop
@@ -42,7 +51,7 @@ jobs:
           
   
   SonarQUBE_test:
-    needs: "Bouwen_van_de_develop_branch"
+    needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
     runs-on: ubuntu-latest
     steps:
 #     - name: chechout branches
