@@ -48,7 +48,7 @@ jobs:
   
   
   OWASP_test:
-    needs: "Bouwen_van_de_develop_branch"
+#     needs: "Bouwen_van_de_develop_branch"
     runs-on: ubuntu-latest
     steps:
       - name: Uitvoeren van OWASP
