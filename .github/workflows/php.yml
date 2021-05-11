@@ -2,9 +2,9 @@ name: PHP Composer test
 
 on:
   push:
-    branches: [main, Develop, Issue]
+    branches: [Issue]
   pull_request:
-    branches: [main, Develop, Issue]
+    branches: []
 
 jobs:
   Unit_testen_van_de_branch:
@@ -50,7 +50,7 @@ jobs:
     
     
   Bouwen_van_de_develop_branch_2:
-    needs: "Unit_testen_van_de_branch"
+    needs: "Merge_conflicten_vinden"
     runs-on: ubuntu-latest
     steps:
       - name: chechout branches
