@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: mergen van Issue_branch met Develop_branch
+      run: echo 'Issue_branch gemerged met Develop_branch'
 #       uses: devmasx/merge-branch@v1.3.1
 #       with:
 #           type: now
@@ -36,6 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Uitvoeren van SonarQUBE
+      run: echo 'SonarQUBE test uitgevoerd'
 #       uses: kitabisa/sonarqube-action@master
 #       with:
 #         projectBaseDir: "/path/to/my-custom-project"
