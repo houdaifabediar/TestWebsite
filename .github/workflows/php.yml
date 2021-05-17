@@ -193,7 +193,7 @@ jobs:
 
 
 
-  Acceptatietest_&_regressietest_(Codeception):
+  Acceptatietest(Codeception):
     needs: ["Deployment_van_Develop_branch_op_test_PRO"]
     runs-on: ubuntu-latest
     steps:
@@ -239,7 +239,7 @@ jobs:
         
         
   Merge_conflicten_vinden_3:
-    needs: ["Acceptatietest_&_regressietest_(Codeception)", "Regressietest_(Codeception)", "Gebruikerstest"]
+    needs: ["Acceptatietest(Codeception)", "Regressietest_(Codeception)", "Gebruikerstest"]
     runs-on: ubuntu-latest
     steps:
         
