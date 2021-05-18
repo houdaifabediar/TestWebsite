@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         
-#       - name: chechout branches
+#       - name: chechout branche
 #         uses: actions/checkout@v2
             
 #       - name: Merge Conflict finder
