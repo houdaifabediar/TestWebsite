@@ -1,0 +1,26 @@
+name: 0. testen van acties 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  
+  Jira:
+    runs-on: ubuntu-latest 
+    steps:
+    
+    - name: Inloggen Jira
+      uses: atlassian/gajira-login@master
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+# marketplace: https://github.com/marketplace/actions/jira-login
+    
+    
+    - name: Jira Issue comment
+      uses: atlassian/gajira-comment@master
+      with:
+      issue: PO-54
+      comment: ${{ github.event.pusher.name }} "Heeft de unit test uitgevoerd"
+# marketplace: https://github.com/marketplace/actions/jira-add-comment
