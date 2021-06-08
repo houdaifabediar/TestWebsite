@@ -6,24 +6,8 @@ on:
 
 jobs:
 
-  merge_conflicten_vinden_1:
-    runs-on: ubuntu-latest
-    steps:
-    
-      - name: chechout branches
-        uses: actions/checkout@v2
-        
-      - name: Merge Conflict finder
-        uses: olivernybroe/action-conflict-finder@v2.0
-        
-      - name: merge conflict finder uitvoeren, 1e 
-        run: echo "conflict finder utgevoerd, 1e"
-
-
-
 
   Develop_branch_updaten_met_master_branch:
-    needs: "merge_conflicten_vinden_1"
     runs-on: ubuntu-latest
     steps:
 
@@ -42,29 +26,12 @@ jobs:
           
       - name: Master_branch updaten met Develop_branch 
         run: echo "Develop_branch geupdatet met Master_branch"
-              
-              
-              
-              
-  merge_conflicten_vinden_2:
-    needs: "Develop_branch_updaten_met_master_branch"
-    runs-on: ubuntu-latest
-    steps:
-    
-#       - name: chechout branches
-#         uses: actions/checkout@v2
-        
-#       - name: Merge Conflict finder
-#         uses: olivernybroe/action-conflict-finder@v2.0
-        
-      - name: merge conflict finder uitvoeren, 2e 
-        run: echo "conflict finder utgevoerd, 2e"
-          
-    
-    
-    
+                
+ 
+ 
+ 
   Bouwen_van_de_develop_branch:
-    needs: "merge_conflicten_vinden_2"
+    needs: "Develop_branch_updaten_met_master_branch"
     runs-on: ubuntu-latest
     steps:
     
