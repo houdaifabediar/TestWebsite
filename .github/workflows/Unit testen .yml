@@ -1,0 +1,15 @@
+name: Unit testen 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Unit_testen_van_de_branch:
+    runs-on: ubuntu-latest
+    steps:
+    
+#     - name: chechout branches
+#       uses: actions/checkout@v2
+
+    - name: Uitvoeren van Unit test
+      run: echo 'Unit test uitgevoerd'

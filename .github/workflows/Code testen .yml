@@ -1,0 +1,91 @@
+    
+name: Testen van code 
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+
+  Develop_branch_updaten_met_master_branch:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: chechout branches
+        uses: actions/checkout@v2
+
+      - name: mergen van Master_branch met de Develop_branch
+        run: echo 'Issue_branch gemerged met Develop_branch'
+
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: main
+          target_branch: Develop
+          github_token: ${{ github.token }}
+          
+      - name: Master_branch updaten met Develop_branch 
+        run: echo "Develop_branch geupdatet met Master_branch"
+                
+ 
+ 
+ 
+  Bouwen_van_de_develop_branch:
+    needs: "Develop_branch_updaten_met_master_branch"
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: chechout branches
+        uses: actions/checkout@v2
+        
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
+            type: now
+            from_branch: Issue
+            target_branch: Develop
+            github_token: ${{ github.token }}
+            
+      - name: mergen van Issue_branch met Develop_branch
+        run: echo 'Issue_branch gemerged met Develop_branch'
+          
+# marketplace: https://github.com/marketplace/actions/merge-branch
+          
+          
+  
+  
+  SonarQUBE_test:
+    needs: ["Bouwen_van_de_develop_branch"]
+    runs-on: ubuntu-latest
+    steps:
+
+#     - name: chechout branches
+#       uses: actions/checkout@v2
+        
+#     - uses: kitabisa/sonarqube-action@master
+#       with:
+#         projectBaseDir: "/path/to/my-custom-project"
+#         projectKey: "my-custom-project"
+#         projectName: "my-custom-project-name"
+#         projectVersion: "v0.0.1"
+
+      - name: Uitvoeren van SonarQUBE
+        run: echo 'SonarQUBE test uitgevoerd'
+
+# marketplace: https://github.com/marketplace/actions/sonarqube-scan
+  
+  
+  
+  
+  OWASP_test:
+    needs: ["Bouwen_van_de_develop_branch"]
+    runs-on: ubuntu-latest
+    steps:
+        
+#       - uses: zaproxy/action-full-scan@v0.2.0
+#         with:
+#           target: 'localhost:8080'
+
+      - name: Uitvoeren van OWASP
+        run: echo 'OWASP scan uitgevoerd'
+          
+# marketplace: https://github.com/marketplace/actions/owasp-zap-full-scan
