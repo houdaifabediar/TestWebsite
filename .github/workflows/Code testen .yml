@@ -5,41 +5,41 @@ on:
   workflow_dispatch:
 
 jobs:
-  
-  Merge_conflicten_vinden_1:
-    needs: "Unit_testen_van_de_branch"
+
+  merge_conflicten_vinden_1:
+    needs: "Develop_branch_updaten_met_master_branch"
     runs-on: ubuntu-latest
     steps:
+    
+      - name: chechout branches
+        uses: actions/checkout@v2
         
-#       - name: chechout branche
-#         uses: actions/checkout@v2
-            
-#       - name: Merge Conflict finder
-#         uses: olivernybroe/action-conflict-finder@v2.0
+      - name: Merge Conflict finder
+        uses: olivernybroe/action-conflict-finder@v2.0
         
-      - name: merge conflict finder uitvoeren 
-        run: echo "conflict finder utgevoerd"
-              
-              
-              
-              
+      - name: merge conflict finder uitvoeren, 1e 
+        run: echo "conflict finder utgevoerd, 1e"
+
+
+
+
   Develop_branch_updaten_met_master_branch:
-    needs: "Merge_conflicten_vinden_1"
+    needs: "merge_conflicten_vinden_1"
     runs-on: ubuntu-latest
     steps:
 
-#       - name: chechout branches
-#         uses: actions/checkout@v2
+      - name: chechout branches
+        uses: actions/checkout@v2
 
-#       - name: mergen van Master_branch met de Develop_branch
-#         run: echo 'Issue_branch gemerged met Develop_branch'
+      - name: mergen van Master_branch met de Develop_branch
+        run: echo 'Issue_branch gemerged met Develop_branch'
 
-#       - uses: devmasx/merge-branch@v1.3.1
-#         with:
-#           type: now
-#           from_branch: main
-#           target_branch: Develop
-#           github_token: ${{ github.token }}
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: main
+          target_branch: Develop
+          github_token: ${{ github.token }}
           
       - name: Master_branch updaten met Develop_branch 
         run: echo "Develop_branch geupdatet met Master_branch"
@@ -64,52 +64,31 @@ jobs:
     
     
     
-  Bouwen_van_de_develop_branch_1:
+  Bouwen_van_de_develop_branch:
     needs: "merge_conflicten_vinden_2"
     runs-on: ubuntu-latest
     steps:
     
-#       - name: chechout branches
-#         uses: actions/checkout@v2
+      - name: chechout branches
+        uses: actions/checkout@v2
         
-#       - uses: devmasx/merge-branch@v1.3.1
-#         with:
-#             type: now
-#             from_branch: Issue
-#             target_branch: Develop
-#             github_token: ${{ github.token }}
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
+            type: now
+            from_branch: Issue
+            target_branch: Develop
+            github_token: ${{ github.token }}
             
-      - name: mergen van Issue_branch met Develop_branch
-        run: echo 'Issue_branch gemerged met Develop_branch'
-    
-    
-    
-    
-  Bouwen_van_de_develop_branch_2:
-    needs: "merge_conflicten_vinden_2"
-    runs-on: ubuntu-latest
-    steps:
-    
-#       - name: chechout branches
-#         uses: actions/checkout@v2
-        
-#       - uses: devmasx/merge-branch@v1.3.1
-#         with:
-#           type: now
-#           from_branch: Issue1
-#           target_branch: Develop
-#           github_token: ${{ github.token }}
-          
       - name: mergen van Issue_branch met Develop_branch
         run: echo 'Issue_branch gemerged met Develop_branch'
           
 # marketplace: https://github.com/marketplace/actions/merge-branch
           
-  
+          
   
   
   SonarQUBE_test:
-    needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
+    needs: ["Bouwen_van_de_develop_branch"]
     runs-on: ubuntu-latest
     steps:
 
@@ -132,7 +111,7 @@ jobs:
   
   
   OWASP_test:
-    needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
+    needs: ["Bouwen_van_de_develop_branch"]
     runs-on: ubuntu-latest
     steps:
         
@@ -144,17 +123,3 @@ jobs:
         run: echo 'OWASP scan uitgevoerd'
           
 # marketplace: https://github.com/marketplace/actions/owasp-zap-full-scan
-
-
-
-
-  Component_test:
-    needs: ["Bouwen_van_de_develop_branch_1", "Bouwen_van_de_develop_branch_2"]
-    runs-on: ubuntu-latest
-    steps:
-    
-#       - name: chechout branches
-#         uses: actions/checkout@v2
-
-      - name: uitvoeren van component test
-        run: echo 'Component test uitgevoerd'
