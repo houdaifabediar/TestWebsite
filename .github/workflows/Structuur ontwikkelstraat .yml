@@ -1,7 +1,7 @@
 name: Demo SOLL ontwikkelstraat
 
 on:
-  worklfow_dispatch
+  workflow_dispatch:
 
 jobs:
   Unit_testen_van_de_branch:
