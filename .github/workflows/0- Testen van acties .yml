@@ -21,6 +21,6 @@ jobs:
     - name: Jira Issue comment
       uses: atlassian/gajira-comment@master
       with:
-        issue: https://infinitcare.atlassian.net/browse/PO-54
+        issue: PO-54
         comment: ${{ github.event.pusher.name }} "Heeft de unit test uitgevoerd"
 # marketplace: https://github.com/marketplace/actions/jira-add-comment
