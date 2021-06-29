@@ -2,7 +2,15 @@ name: 0. testen van acties
 
 on:
   workflow_dispatch:
-  echo '{"name":"mona", "greeting":"hello"}'
+    inputs:
+      Unit_test:
+        description: 'Unit test oke?'
+        required: True
+        default: 'Ja'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
 
 jobs:
   
