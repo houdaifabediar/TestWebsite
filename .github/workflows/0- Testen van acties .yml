@@ -6,7 +6,6 @@ on:
       Unit_test:
         description: 'Unit test oke?'
         required: True
-        default: 'Ja'
       home:
         description: 'location'
         required: false
