@@ -2,6 +2,7 @@ name: 0. testen van acties
 
 on:
   workflow_dispatch:
+  echo '{"name":"mona", "greeting":"hello"}'
 
 jobs:
   
