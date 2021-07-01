@@ -179,6 +179,8 @@ jobs:
   Deployment_van_Develop_branch_op_test_PRO:
     needs: ["SonarQUBE_test", "OWASP_test", "Component_test"]
     runs-on: ubuntu-latest
+    environment: 
+      name: Test 'MANUAL APPROVELS'
     steps:
     
 #       - name: chechout branches
