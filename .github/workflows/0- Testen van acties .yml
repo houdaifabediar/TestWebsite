@@ -13,13 +13,43 @@ on:
 
 jobs:
 
-  checkout_branch:
-    runs-on: ubuntu-latest
+  Mergen_van_branches:
+    runs-on: self-hosted
     steps:
+
+      - name: chechout branches
+        uses: actions/checkout@v2
+
+      - name: Merge Master met Develop
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: main
+          target_branch: Develop
+          github_token: ${{ github.token }}
+
+      - name: merge Issue met Develop
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
+            type: now
+            from_branch: Issue
+            target_branch: Develop
+            github_token: ${{ github.token }}
+          
+          
+
+
+
+#   checkout_branch:
+#     runs-on: ubuntu-latest
+#     steps:
     
-    - uses: actions/checkout@v2
-      with:
-        ref: 'Issue'
+#     - uses: actions/checkout@v2
+#       with:
+#         ref: 'Issue'
+
+
+
 
 #   Jira:
 #     runs-on: ubuntu-latest 
