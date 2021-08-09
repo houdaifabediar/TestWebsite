@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Merge Master met Develop
-      - uses: devmasx/merge-branch@v1.3.1
+        uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
           from_branch: main
@@ -29,7 +29,7 @@ jobs:
           github_token: ${{ github.token }}
 
       - name: merge Issue met Develop
-      - uses: devmasx/merge-branch@v1.3.1
+        uses: devmasx/merge-branch@v1.3.1
         with:
             type: now
             from_branch: Issue
