@@ -19,7 +19,7 @@ jobs:
     
     - uses: actions/checkout@v1
       with:
-        ref: Issue
+        ref: 'Issue'
 
 #   Jira:
 #     runs-on: ubuntu-latest 
