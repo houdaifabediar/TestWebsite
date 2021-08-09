@@ -36,10 +36,16 @@ jobs:
             target_branch: Develop
             github_token: ${{ github.token }}
           
-          
+       
+       
+       
+       
+       
+       
+       
 
 
-
+###ACTIE TESTEN: ALLEEN 1 SPECIFIEKE BRANCH UITCHECKEN MIDDELS DE ref FUNCTIE
 #   checkout_branch:
 #     runs-on: ubuntu-latest
 #     steps:
@@ -51,6 +57,13 @@ jobs:
 
 
 
+
+
+
+
+
+
+###JIRA TESTEN: MET AUTOMATISCHE MELDINGEN SCHRIJVEN IN ISSUE
 #   Jira:
 #     runs-on: ubuntu-latest 
 #     steps:
