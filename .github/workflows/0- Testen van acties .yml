@@ -2,33 +2,41 @@ name: 0. testen van acties
 
 on:
   workflow_dispatch:
-    inputs:
-      Unit_test:
-        description: 'Unit test oke?'
-        required: True
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
+#     inputs:
+#       Unit_test:
+#         description: 'Unit test oke?'
+#         required: True
+#       home:
+#         description: 'location'
+#         required: false
+#         default: 'The Octoverse'
 
 jobs:
-  
-  Jira:
-    runs-on: ubuntu-latest 
+
+  checkout branch:
+    runs-on: ubuntu-latest
     steps:
     
-    - name: Inloggen Jira
-      uses: atlassian/gajira-login@master
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-# marketplace: https://github.com/marketplace/actions/jira-login
-    
-    
-    - name: Jira Issue comment
-      uses: atlassian/gajira-comment@master
+    - uses: actions/checkout@v1
       with:
-        issue: PO-54
-        comment: ${{ github.event.pusher.name }} "Unit test is uitgevoerd"
-# marketplace: https://github.com/marketplace/actions/jira-add-comment
+        ref: Issue
+
+#   Jira:
+#     runs-on: ubuntu-latest 
+#     steps:
+    
+#     - name: Inloggen Jira
+#       uses: atlassian/gajira-login@master
+#       env:
+#         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+#         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+#         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+# # marketplace: https://github.com/marketplace/actions/jira-login
+    
+    
+#     - name: Jira Issue comment
+#       uses: atlassian/gajira-comment@master
+#       with:
+#         issue: PO-54
+#         comment: ${{ github.event.pusher.name }} "Unit test is uitgevoerd"
+# # marketplace: https://github.com/marketplace/actions/jira-add-comment
