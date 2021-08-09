@@ -14,7 +14,7 @@ on:
 jobs:
 
   Mergen_van_branches:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
 
       - name: chechout branches
