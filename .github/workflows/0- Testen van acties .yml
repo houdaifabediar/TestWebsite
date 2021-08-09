@@ -1,0 +1,72 @@
+name: 0. testen van acties 
+
+on:
+  workflow_dispatch:
+#     inputs:
+#       Unit_test:
+#         description: 'Unit test oke?'
+#         required: True
+#       home:
+#         description: 'location'
+#         required: false
+#         default: 'The Octoverse'
+
+jobs:
+
+  Mergen_van_branches:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: chechout branches
+        uses: actions/checkout@v2
+
+      - name: Merge Master met Develop
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: main
+          target_branch: Develop
+          github_token: ${{ github.token }}
+
+      - name: merge Issue met Develop
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+            type: now
+            from_branch: Issue
+            target_branch: Develop
+            github_token: ${{ github.token }}
+          
+          
+
+
+
+#   checkout_branch:
+#     runs-on: ubuntu-latest
+#     steps:
+    
+#     - uses: actions/checkout@v2
+#       with:
+#         ref: 'Issue'
+
+
+
+
+#   Jira:
+#     runs-on: ubuntu-latest 
+#     steps:
+    
+#     - name: Inloggen Jira
+#       uses: atlassian/gajira-login@master
+#       env:
+#         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+#         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+#         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+# # marketplace: https://github.com/marketplace/actions/jira-login
+    
+    
+#     - name: Jira Issue comment
+#       uses: atlassian/gajira-comment@master
+#       with:
+#         issue: PO-54
+#         comment: ${{ github.event.pusher.name }} "Unit test is uitgevoerd"
+# # marketplace: https://github.com/marketplace/actions/jira-add-comment
