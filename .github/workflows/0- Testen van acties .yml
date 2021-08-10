@@ -12,29 +12,44 @@ on:
 #         default: 'The Octoverse'
 
 jobs:
-
-  Mergen_van_branches:
+  stap1:
     runs-on: ubuntu-latest
     steps:
+      - name: stap 1
+        run: echo "stap 1"
 
-      - name: chechout branches
-        uses: actions/checkout@v2
+  stap2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: stap 2
+        run: echo "stap 2"
+    
 
-      - name: Merge Master met Develop
-        uses: devmasx/merge-branch@v1.3.1
-        with:
-          type: now
-          from_branch: main
-          target_branch: Develop
-          github_token: ${{ github.token }}
 
-      - name: merge Issue met Develop
-        uses: devmasx/merge-branch@v1.3.1
-        with:
-            type: now
-            from_branch: Issue
-            target_branch: Develop
-            github_token: ${{ github.token }}
+
+
+#   Mergen_van_branches:
+#     runs-on: ubuntu-latest
+#     steps:
+
+#       - name: chechout branches
+#         uses: actions/checkout@v2
+
+#       - name: Merge Master met Develop
+#         uses: devmasx/merge-branch@v1.3.1
+#         with:
+#           type: now
+#           from_branch: main
+#           target_branch: Develop
+#           github_token: ${{ github.token }}
+
+#       - name: merge Issue met Develop
+#         uses: devmasx/merge-branch@v1.3.1
+#         with:
+#             type: now
+#             from_branch: Issue
+#             target_branch: Develop
+#             github_token: ${{ github.token }}
           
        
        
