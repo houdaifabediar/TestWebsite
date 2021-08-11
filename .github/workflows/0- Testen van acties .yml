@@ -11,18 +11,32 @@ on:
 #         required: false
 #         default: 'The Octoverse'
 
-jobs:
-  stap1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: stap 1
-        run: echo "stap 1"
 
-  stap2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: stap 2
-        run: echo "stap 2"
+
+
+
+#       - name: Pauze
+#         run: sleep 30s
+#         shell: bash
+# #Marketplace: https://github.com/marketplace/actions/wait-sleep
+# # zet een pauze van een x aantal minuten in om vervolgens weer verder te gaan met de workflow.
+
+
+
+
+
+# jobs:
+#   stap1:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: stap 1
+#         run: echo "stap 1"
+
+#   stap2:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: stap 2
+#         run: echo "stap 2"
     
 
 
