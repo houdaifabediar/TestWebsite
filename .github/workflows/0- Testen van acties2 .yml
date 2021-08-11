@@ -22,9 +22,9 @@ jobs:
         run: echo "Vorige run was succesvol"
 
 
-  on-failure:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - name: Gefaald
-        run: echo "Vorige run is gefaald"
+#   on-failure:
+#     runs-on: ubuntu-latest
+#     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+#     steps:
+#       - name: Gefaald
+#         run: echo "Vorige run is gefaald"
