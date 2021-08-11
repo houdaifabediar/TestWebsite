@@ -23,7 +23,7 @@ jobs:
         run: echo "stap 1"
 
   stap2:
-    runs-on: ubuntu-latest
+    runs-on: fout
     needs: ["stap1"]
     steps:
       - name: stap 2
