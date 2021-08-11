@@ -1,11 +1,11 @@
 name: testfile 2
 
 on:
-  workflow_dispatch:
+#   workflow_dispatch:
 
-#   workflow_run:
-#     workflows: ["0. testen van acties"]
-#     types: [completed]
+  workflow_run:
+    workflows: ["0. testen van acties"]
+    types: [completed]
   
 jobs:
   on-success:
