@@ -24,6 +24,7 @@ jobs:
 
   stap2:
     runs-on: ubuntu-latest
+    needs: ["stap1"]
     steps:
       - name: stap 2
         run: echo "stap 2"
