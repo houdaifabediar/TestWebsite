@@ -1,6 +1,17 @@
 name: testfile 2
 
 on:
+  workflow_dispatch:
+      inputs: 
+        SonarQUBE:
+          description: 'Is de SonarQUBE test oke?'
+          required: True
+           
+           
+        OWASP:
+          description: 'Is de OWASP test uitgevoerd?'
+          required: True
+  
   workflow_run:
     workflows: ["0. testen van acties"]
     types: [completed]
