@@ -5,6 +5,9 @@ on:
     workflows: ["0- Testen van acties .yml"]
     types: [completed]
   
- jobs:
-  test:
-    run: echo "test"
+jobs:
+  stap1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: stap 1
+        run: echo "stap 1"
