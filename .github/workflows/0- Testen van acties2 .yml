@@ -1,0 +1,10 @@
+name: testfile 2
+
+on:
+  workflow_run:
+    workflows: ["0- Testen van acties .yml"]
+    types: [completed]
+  
+ jobs:
+  test:
+    run: echo "test"
