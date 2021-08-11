@@ -9,7 +9,7 @@ on:
   
 jobs:
   test1:
-    runs-on: ubuntiu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: stap 1
         run: echo "stap 1"
