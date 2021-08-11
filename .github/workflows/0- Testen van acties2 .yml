@@ -2,7 +2,7 @@ name: testfile 2
 
 on:
   workflow_run:
-    workflows: ["0- Testen van acties"]
+    workflows: ["0. testen van acties"]
     types: [completed]
   
 jobs:
