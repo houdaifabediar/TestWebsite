@@ -8,23 +8,23 @@ on:
     types: [completed]
   
 jobs:
-  test1:
+#   test1:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: stap 1
+#         run: echo "stap 1"
+
+  on-success:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: stap 1
-        run: echo "stap 1"
-
-#   on-success:
-#     runs-on: ubuntu-latest
-#     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-#     steps:
-#       - name: succes 
-#         run: echo "Vorige run was succesvol"
+      - name: succes 
+        run: echo "Vorige run was succesvol"
 
 
-#   on-failure:
-#     runs-on: ubuntu-latest
-#     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-#     steps:
-#       - name: Gefaald
-#         run: echo "Vorige run is gefaald"
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - name: Gefaald
+        run: echo "Vorige run is gefaald"
