@@ -22,7 +22,7 @@ jobs:
       PROCEED: "ja" 
     steps:
       - name: stap 1
-        if: ${{ github.event.inputs.Unit_test == env.PROCEED || github.event.inputs.home == env.PROCEED}}
+        if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
 
         run: echo "stap 1"
 
