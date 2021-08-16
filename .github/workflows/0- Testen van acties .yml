@@ -18,11 +18,11 @@ on:
 jobs:
   stap1:
     runs-on: ubuntu-latest
-#     env:
-#       PROCEED: "ja"
+    env:
+      PROCEED: ${{ github.event.inputs.Unit_test}}
     steps:
       - name: stap 1
-        if: ${{ github.event.inputs.Unit_test == "ja" }}
+        if: ${{ github.event.inputs.Unit_test == env.PROCEED }}
         run: echo "stap 1"
 
 #   stap2:
