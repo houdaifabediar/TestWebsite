@@ -6,10 +6,10 @@ on:
       Unit_test:
         description: 'Unit test oke?'
         required: True
-#       home:
-#         description: 'location'
-#         required: false
-#         default: 'The Octoverse'
+      home:
+        description: 'location'
+        required: true
+        default: 'The Octoverse'
 
 
 
@@ -22,7 +22,8 @@ jobs:
       PROCEED: "ja" 
     steps:
       - name: stap 1
-        if: ${{ github.event.inputs.Unit_test == env.PROCEED }}
+        if: ${{ github.event.inputs.Unit_test == env.PROCEED || github.event.inputs.home == env.PROCEED}}
+
         run: echo "stap 1"
 
 #   stap2:
