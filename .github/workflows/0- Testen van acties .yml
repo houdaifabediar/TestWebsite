@@ -2,10 +2,10 @@ name: 0. testen van acties
 
 on:
   workflow_dispatch:
-#     inputs:
-#       Unit_test:
-#         description: 'Unit test oke?'
-#         required: True
+    inputs:
+      Unit_test:
+        description: 'Unit test oke?'
+        required: True
 #       home:
 #         description: 'location'
 #         required: false
@@ -18,16 +18,17 @@ on:
 jobs:
   stap1:
     runs-on: ubuntu-latest
+    if: ${{ inputs.<"Unit_test"> == "ja"}}
     steps:
       - name: stap 1
         run: echo "stap 1"
 
-  stap2:
-    runs-on: ubuntu-latest
-    needs: ["stap1"]
-    steps:
-      - name: stap 2
-        run: echo "stap 2"
+#   stap2:
+#     runs-on: ubuntu-latest
+#     needs: ["stap1"]
+#     steps:
+#       - name: stap 2
+#         run: echo "stap 2"
 
 
 
