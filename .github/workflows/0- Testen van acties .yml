@@ -18,7 +18,7 @@ on:
 jobs:
   stap1:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.Unit_test == "ja" }}
+    if: ${{ github.event.inputs.Unit_test }} == "ja"
     steps:
       - name: stap 1
         run: echo "stap 1"
