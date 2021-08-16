@@ -12,14 +12,13 @@ on:
 #         default: 'The Octoverse'
 
 
-
+env:
+  PROCEED: "ja"
 
 
 jobs:
   stap1:
     runs-on: ubuntu-latest
-    env:
-      PROCEED: "ja"
     if: ${{ github.event.inputs.Unit_test == env.PROCEED }}
     steps:
       - name: stap 1
