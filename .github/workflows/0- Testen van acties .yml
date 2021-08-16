@@ -21,10 +21,12 @@ jobs:
     env:
       PROCEED: "ja" 
     steps:
-      - name: stap 1
+      - name: akkoord
         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
-
         run: echo "stap 1"
+      - name: niet akkoord
+        if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
+        run: echo "verkeerde input"
 
 #   stap2:
 #     runs-on: ubuntu-latest
