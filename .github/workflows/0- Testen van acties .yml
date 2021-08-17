@@ -43,6 +43,7 @@ jobs:
         
   exit:
     runs-on: ubuntu-latest
+    needs: ["stap1"]
     env:
       PROCEED: "ja"
     steps:
