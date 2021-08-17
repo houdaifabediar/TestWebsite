@@ -21,12 +21,16 @@ on:
 jobs:
   stap1:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
     steps:
 #       - run: |
 #           sudo /etc/init.d/mysql start
       - name: akkoord
+        if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
         run: echo "stap 1"
+        
+      - name: Docker containers stoppen 
+        if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
+        run: docker ps -q | xargs -n 1 -P 8 -I {} docker stop {}
 
 
   stap2:
@@ -34,7 +38,7 @@ jobs:
     if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
     steps:
       - name: niet akkoord
-        run: echo "verkeerde input"
+        run: echo "::error file=app.js,Er is niet voldaan aan de starteisen van het proces, zie workflow inputs"
 
 #   stap2:
 #     runs-on: ubuntu-latest
