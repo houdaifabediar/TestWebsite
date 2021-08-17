@@ -6,7 +6,13 @@ on:
       Unit_test:
         description: 'Unit test oke?'
         required: True
+        
       home:
+        description: 'location'
+        required: true
+        default: 'The Octoverse'
+
+      Stap .. los van het proces uitvoeren?:
         description: 'location'
         required: true
         default: 'The Octoverse'
@@ -35,6 +41,10 @@ jobs:
       - name: Docker containers stoppen
 #         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
         run: docker ps -q | xargs -n 1 -P 8 -I {} docker stop {}
+        
+      - name: exit
+        if: ${{ github.event.inputs."Stap .. los van het proces uitvoeren?" == env.PROCEED}}
+        run: exit 1
 
 
 
