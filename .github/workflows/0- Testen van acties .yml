@@ -33,7 +33,7 @@ jobs:
 
       - name: Akkoord
         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
-        run: exit 
+        run: exit 0
 
       - name: Niet akkoord
         if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
