@@ -32,7 +32,9 @@ jobs:
       - name: Niet akkoord
         if: ${{ github.event.inputs.Unit_test != env.PROCEED || github.event.inputs.test != env.PROCEED}}
         run: |   
+        
           echo "Er is niet voldaan aan de start eisen van het proces. Zorg ervoor dat een unit_test/test is uitgevoerd en beantwoord deze vraag met een 'ja'. "
+          
           exit 1
       - name: akkoord
 #         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
