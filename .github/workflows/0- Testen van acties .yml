@@ -7,15 +7,14 @@ on:
         description: 'Unit test oke?'
         required: True
         
-      home:
-        description: 'location'
+      test:
+        description: 'Test, voor "ja" in voor voltooien'
         required: true
-        default: 'The Octoverse'
+        default: 'ja'
 
-      Stap .. los van het proces uitvoeren?:
-        description: 'location'
+      Losse_stap:
+        description: 'Deze stap in het proces los uitvoeren?'
         required: true
-        default: 'The Octoverse'
 
 
 
@@ -43,7 +42,7 @@ jobs:
         run: docker ps -q | xargs -n 1 -P 8 -I {} docker stop {}
         
       - name: exit
-        if: ${{ github.event.inputs."Stap .. los van het proces uitvoeren?" == env.PROCEED}}
+        if: ${{ github.event.inputs.Losse_stap == env.PROCEED}}
         run: exit 1
 
 
