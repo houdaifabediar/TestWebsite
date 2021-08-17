@@ -32,11 +32,8 @@ jobs:
         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
         run: docker ps -q | xargs -n 1 -P 8 -I {} docker stop {}
 
-  Niet_akkoord:
-    runs-on: ubuntu-latest
-    needs: ["stap1"]
-    steps: 
-      - if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
+      - name: Niet akkoord
+        if: ! ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
         run: exit 1 
 
 #   stap2:
