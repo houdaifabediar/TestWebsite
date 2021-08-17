@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: niet akkoord
         if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
-        run: echo "::error file=app.js,Er is niet voldaan aan de starteisen van het proces, zie workflow inputs"
+        run: exit 1
 
 #   stap2:
 #     runs-on: ubuntu-latest
