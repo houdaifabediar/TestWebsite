@@ -1,8 +1,5 @@
 name: 0. testen van acties
 
-env:
-  PROCEED: "ja" 
-
 on:
   workflow_dispatch:
     inputs:
@@ -20,7 +17,9 @@ on:
         required: true
 
 
-
+env:
+  PROCEED: "ja" 
+  UNIT_TEST: ${{github.event.inputs.Unit_test }}
 
 
 jobs:
@@ -33,7 +32,7 @@ jobs:
 
       - name: Niet akkoord
         if: ${{ github.event.inputs.Unit_test != env.PROCEED || github.event.inputs.test != env.PROCEED}}
-        run: exit 1 
+        run: exit 1 && echo "Er is niet voldaan aan de start eisen van het proces. Zorg ervoor dat een unit_test/test is uitgevoerd en beantwoord deze vraag met een 'ja'. "
         
       - name: akkoord
 #         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
@@ -52,7 +51,7 @@ jobs:
     
       - name: exit
         if: ${{ github.event.inputs.Losse_stap == env.PROCEED}}
-        run: exit 1
+        run: exit 1 && echo "Dit is een individuele stap, de stap is correct uitgevoerd en voorkomt middels deze foutmelding dat het automatische de volgende stappen activeert."
 
 
 
