@@ -23,21 +23,20 @@ jobs:
     steps:
 #       - run: |
 #           sudo /etc/init.d/mysql start
-      - name: akkoord
-        if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
-        run: echo "stap 1"
-        
-      - name: Docker containers stoppen
-        if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
-        run: docker ps -q | xargs -n 1 -P 8 -I {} docker stop {}
-
-      - name: Akkoord
-        if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
-        run: exit 0
 
       - name: Niet akkoord
         if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
         run: exit 1 
+        
+      - name: akkoord
+#         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
+        run: echo "stap 1"
+        
+      - name: Docker containers stoppen
+#         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
+        run: docker ps -q | xargs -n 1 -P 8 -I {} docker stop {}
+
+
 
 #   stap2:
 #     runs-on: ubuntu-latest
