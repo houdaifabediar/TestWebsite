@@ -31,6 +31,10 @@ jobs:
         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
         run: docker ps -q | xargs -n 1 -P 8 -I {} docker stop {}
 
+      - name: Akkoord
+        if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
+        run: exit 
+
       - name: Niet akkoord
         if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
         run: exit 1 
