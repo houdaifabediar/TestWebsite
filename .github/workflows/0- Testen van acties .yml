@@ -1,7 +1,4 @@
-name: 0. testen van acties 
-
-env:
-  PROCEED: "ja" 
+name: 0. testen van acties
 
 on:
   workflow_dispatch:
@@ -21,6 +18,8 @@ on:
 jobs:
   stap1:
     runs-on: ubuntu-latest
+    env:
+      PROCEED: "ja" 
     steps:
 #       - run: |
 #           sudo /etc/init.d/mysql start
