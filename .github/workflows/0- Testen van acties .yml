@@ -34,7 +34,7 @@ jobs:
 
       - name: niet akkoord
         if: false == ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
-        run: exit 1
+        run: exit 1 | 
              echo "::error Er is niet voldaan aan de starteisen van het proces"
 
 #   stap2:
