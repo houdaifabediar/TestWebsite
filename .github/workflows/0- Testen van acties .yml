@@ -19,7 +19,6 @@ on:
 
 env:
   PROCEED: "ja" 
-  UNIT_TEST: ${{github.event.inputs.Unit_test }}
 
 
 jobs:
@@ -32,7 +31,7 @@ jobs:
 
       - name: Niet akkoord
         if: ${{ github.event.inputs.Unit_test != env.PROCEED || github.event.inputs.test != env.PROCEED}}
-        run: exit 1 && error ::Er is niet voldaan aan de start eisen van het proces. Zorg ervoor dat een unit_test/test is uitgevoerd en beantwoord deze vraag met een 'ja'.
+        run: error ::Er is niet voldaan aan de start eisen van het proces. Zorg ervoor dat een unit_test/test is uitgevoerd en beantwoord deze vraag met een 'ja'.
         
       - name: akkoord
 #         if: ${{ github.event.inputs.Unit_test == env.PROCEED && github.event.inputs.home == env.PROCEED}}
