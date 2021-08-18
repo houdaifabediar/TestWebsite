@@ -10,10 +10,6 @@ on:
   workflow_run:
     workflows: ["0. testen van acties"]
     types: [completed]
-
-env:
-  JA: "ja" 
-  NEE: "nee"
   
 jobs:
 #   test1:
@@ -24,10 +20,10 @@ jobs:
 
   on-success:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.inputs.Vorige_stap == secrets.VALUE_JA}}
     steps:
-      - if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.inputs.Vorige_stap == env.JA}}
-        name: succes 
-        run: echo "Vorige run was succesvol"
+       - name: succes 
+         run: echo "Vorige run was succesvol"
 
 
 #   on-failure:
