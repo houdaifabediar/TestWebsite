@@ -2,14 +2,19 @@ name: testfile 2
 
 on:
   workflow_dispatch:
-    inputs:
-      Vorige_stap:
-        description: "Was de vorige stap los uitgevoerd van het proces uitgevoerd?"
-        required: true
+#     inputs:
+#       Vorige_stap:
+#         description: "Was de vorige stap los uitgevoerd van het proces uitgevoerd?"
+#         required: true
 
   workflow_run:
     workflows: ["0. testen van acties"]
     types: [completed]
+
+env:
+  JA: "ja" 
+  NEE: "nee"
+  
   
 jobs:
 #   test1:
@@ -20,7 +25,7 @@ jobs:
 
   on-success:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.inputs.Vorige_stap == secrets.VALUE_JA}}
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.inputs == 'succes'}}
     steps:
        - name: succes 
          run: echo "Vorige run was succesvol"
