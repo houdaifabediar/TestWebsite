@@ -24,7 +24,7 @@ jobs:
 
   on-success:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' || }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - if: ${{github.event.inputs.Vorige_stap == env.JA}}
         name: succes 
